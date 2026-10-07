@@ -1,0 +1,21 @@
+.loop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-loop);
+  pointer-events: none;
+}
+
+.path {
+  fill: none;
+  stroke: var(--grain);
+  stroke-width: 1;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0.45;
+}
+
+:global(html:not(.js)) .path {
+  stroke-dashoffset: 0;
+}

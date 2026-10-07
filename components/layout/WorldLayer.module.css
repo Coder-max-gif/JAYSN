@@ -1,0 +1,26 @@
+.world {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-canvas);
+  pointer-events: none;
+}
+
+/* Static poster: dark soil, a low warm horizon, furrow hairlines. Shown while WebGL loads
+   and permanently when WebGL is unavailable. */
+.poster {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 60% at 78% 104%, rgb(138 90 59 / 0.22), transparent 60%),
+    repeating-linear-gradient(90deg, transparent 0 22px, rgb(201 162 75 / 0.035) 22px 23px),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg) 55%, var(--loam) 100%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 60%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 60%);
+  opacity: 0.9;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(140% 100% at 50% 40%, transparent 55%, rgb(12 15 11 / 0.55) 100%);
+}

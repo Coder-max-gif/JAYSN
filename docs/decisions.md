@@ -1,0 +1,28 @@
+# Decisions log
+
+Every non obvious decision goes here. Newest at the bottom. Format: date, decision, why.
+
+| Date | Decision | Why |
+| --- | --- | --- |
+| 2026-10-07 | Next.js 16.4 with Cache Components and Partial Prefetching left on (scaffold default). Client components that read `useSearchParams` sit in `<Suspense>`; product `params` are read inside `<Suspense>`. | Current default of the framework. Pages still prerender as static HTML. |
+| 2026-10-07 | Hero granules are vertex shader driven, not GPGPU (FBO ping pong). Every particle position is a pure function of attributes plus phase uniforms (drift, gather, release, fall). Pointer push uses a damped pointer and damped strength so the spring back has inertia. | Runs on every WebGL2 device, including low tier phones, with no float render targets. Positions do not need to persist between frames for this effect. |
+| 2026-10-07 | Granules render as shaded point sprites (fake sphere normal, rotated ellipse for pellets, depth based blur), not instanced meshes. Product pages use real instanced meshes. | 60k instanced meshes would cost far more than points; at hero scale the sprite shading reads as physical granules. Macro shots need real geometry. |
+| 2026-10-07 | Text targets come from rendering JAYSN AGRO in Instrument Serif to an offscreen canvas with a 5px stroke for weight, sampled every 2px. Two lines on tall screens. | Instrument Serif ships one weight; the stroke makes the formed word readable. |
+| 2026-10-07 | Home camera rail: Catmull-Rom through keyframes, parametrised by index (getPoint, not getPointAt) and driven by a continuous `homeT` measured from section offsets. Damping in CameraRig gives weight. | Keyframes stay tied to chapters regardless of arc length. Scroll position, not time, drives the story. |
+| 2026-10-07 | World layout: hero at the origin, furrows below (y -4.2) running to z -70, Stock station at z -46, port at z -98, globe floating at (0, 26, -104). Stations outside a window around `homeT` are unmounted. | One continuous place. Only the active chapter and neighbours cost anything. |
+| 2026-10-07 | Globe land dots are generated offline from Natural Earth 50m (world-atlas) on a Fibonacci sphere (11,007 dots, Antarctica dropped) and shipped as a 44 KB Int16 binary. | Continents read clearly, no texture needed, tiny payload. `npm run geo` rebuilds it. |
+| 2026-10-07 | Globe labels are a DOM overlay positioned from projected points, not drei `<Html>`. | drei Html creates React roots per label and raced with scene unmounts. The overlay is cheaper and has no race. |
+| 2026-10-07 | Page transition sweep is a separate raw WebGL2 canvas above the page (one full screen triangle), not part of the R3F canvas. | The sweep must cover DOM content; the world canvas sits behind it. Falls back to a CSS fade without WebGL2. |
+| 2026-10-07 | Transition cover and reveal are 0.9s each, outside the duration table. | Specified by the brief (prompt 10). Logged as the only exception. |
+| 2026-10-07 | Home to and from Services uses a foreground only transition (no sweep); product detail pages push the camera into the material during the cover. | Brief prompt 10 route variants. |
+| 2026-10-07 | Production build guard: `npm run build:production` runs `check:content` with STRICT_CONTENT=1 and `check:copy` before `next build`. Plain `npm run build` stays usable for previews. | The client can preview a deploy with TBC markers while nothing unverified can reach the live site. |
+| 2026-10-07 | React Compiler lint rules (immutability, purity, refs, use-memo) are disabled for `/gl` only. | Mutating Three.js objects inside `useFrame` is the intended R3F pattern. DOM code keeps the full rule set. |
+| 2026-10-07 | Process timeline is pinned on desktop only (min-width 1024px) and not under reduced motion. The active step grows with a transform, not font-size. | One pin per page, no layout shift, mobile keeps native scroll. |
+| 2026-10-07 | Services doors morph with flex-grow (1 to 1.86, about 65 percent). | The brief asks for the halves to resize; this is the only layout animation on the site. |
+| 2026-10-07 | Hover distortion on the Stock plate uses an SVG displacement filter driven by GSAP rather than a WebGL plane. | Works on placeholders and real photos without another canvas. |
+| 2026-10-07 | Team portraits use a small raw WebGL2 shader per visible portrait (duotone to colour spotlight, settling ripple). Placeholders are drawn initials, never generated faces. | Brief prompt 08. Only one or two portraits are visible at a time. |
+| 2026-10-07 | Enquiry email goes through the Resend HTTP API with fetch (no SDK). Without keys: logs in development, returns a friendly 503 with WhatsApp and email fallbacks in production. Rate limit is in memory (5 per 10 minutes per IP). | Fewer dependencies. Swap the limiter for a shared store if spam appears. |
+| 2026-10-07 | Contact location is the flat SVG world map with a pin and an "Open in Google Maps" link. | Brief prompt 09: no heavy map embed. |
+| 2026-10-07 | Quality detection uses the WebGL renderer string, cores, memory and pointer type; drei PerformanceMonitor lowers DPR and, after sustained decline, the tier. Software renderers get the low tier. | No network calls, adapts at runtime. |
+| 2026-10-07 | Hero headline appears after the granules release (about 3.5s after the preloader). | Brief prompt 04. LCP trade off recorded in performance.md. |
+| 2026-10-07 | Sound is generated with Web Audio (brown noise wind, two sine drone, filtered ticks and whoosh). Off by default; a saved "on" choice resumes only after the first user gesture. | No audio files, no autoplay. |

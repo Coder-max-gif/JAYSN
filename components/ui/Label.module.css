@@ -1,0 +1,20 @@
+.label {
+  display: inline-flex;
+  gap: var(--space-3);
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--text-dim);
+}
+
+.index {
+  color: var(--grain);
+  font-variant-numeric: tabular-nums;
+}
+
+.gold {
+  color: var(--grain);
+}

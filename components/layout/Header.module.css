@@ -1,0 +1,129 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-header);
+  height: var(--header-h);
+  padding-inline: var(--margin);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.hidden {
+  transform: translateY(-110%);
+}
+
+.blend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+  mix-blend-mode: difference;
+  color: var(--bone);
+}
+
+.brand {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+}
+
+.nav ul {
+  display: flex;
+  gap: var(--space-5);
+}
+
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.72;
+  transition: opacity var(--dur-micro) var(--ease-out);
+}
+
+.link:hover,
+.link[aria-current="page"] {
+  opacity: 1;
+}
+
+.dot {
+  position: absolute;
+  left: -0.75rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  background: var(--grain);
+  border-radius: 50%;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.burger {
+  position: relative;
+  width: 1.5rem;
+  height: 0.5rem;
+}
+
+.burger span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--hairline);
+  background: currentColor;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.burger span:first-child {
+  top: 0;
+}
+.burger span:last-child {
+  bottom: 0;
+}
+
+.burgerOpen span:first-child {
+  transform: translateY(0.22rem) rotate(20deg);
+}
+.burgerOpen span:last-child {
+  transform: translateY(-0.22rem) rotate(-20deg);
+}
+
+@media (max-width: 1099px) {
+  .nav {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta,
+  .toggles {
+    display: none;
+  }
+  .menuLabel {
+    font-size: var(--fs-label);
+  }
+}

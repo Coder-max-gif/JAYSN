@@ -1,0 +1,29 @@
+.skip {
+  position: fixed;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: calc(var(--z-preloader) + 1);
+  padding: var(--space-3) var(--space-4);
+  background: var(--grain);
+  color: var(--soil);
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  transform: translateY(-200%);
+  transition: transform var(--dur-micro) var(--ease-out);
+}
+
+.skip:focus-visible {
+  transform: translateY(0);
+}
+
+.page {
+  position: relative;
+  z-index: var(--z-content);
+}
+
+.main {
+  position: relative;
+  outline: none;
+}

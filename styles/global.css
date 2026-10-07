@@ -1,0 +1,212 @@
+@import "./tokens.css";
+
+/* Registered so the chapter background can tween */
+@property --bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #0c0f0b;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  transition: --bg var(--dur-large) var(--ease-in-out);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scrollbar-color: var(--moss) var(--soil);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+body {
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  min-height: 100svh;
+  overflow-x: clip;
+}
+
+img,
+video,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--grain);
+  color: var(--soil);
+}
+
+:focus-visible {
+  outline: var(--hairline) solid var(--focus);
+  outline-offset: 4px;
+}
+
+/* ---------- Layout helpers ---------- */
+
+.container {
+  width: 100%;
+  padding-inline: var(--margin);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--columns), minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding-inline: var(--margin);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- Type helpers ---------- */
+
+.t-display-xl,
+.t-display-l,
+.t-display-m {
+  font-family: var(--font-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--track-display);
+  font-weight: 400;
+}
+.t-display-xl {
+  font-size: var(--fs-display-xl);
+}
+.t-display-l {
+  font-size: var(--fs-display-l);
+}
+.t-display-m {
+  font-size: var(--fs-display-m);
+}
+.t-heading {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+}
+.t-body-l {
+  font-size: var(--fs-body-l);
+  line-height: var(--lh-body);
+  color: var(--text-dim);
+}
+.t-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+.t-caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--text-faint);
+}
+.t-gold {
+  color: var(--grain);
+}
+em,
+.t-italic {
+  font-style: italic;
+}
+
+/* Lines produced by SplitText are masked for the slide-up reveal */
+.split-mask {
+  overflow: clip;
+  overflow-clip-margin: 0.12em;
+  padding-bottom: 0.04em;
+}
+
+/* Before JS hydration, reveal targets stay visible (no-JS readable) */
+html.js [data-reveal="fade"] {
+  opacity: 0;
+}
+html[data-motion="reduce"] [data-reveal="fade"] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:not([data-motion="full"]) [data-reveal="fade"] {
+    opacity: 1;
+  }
+}
+
+/* Hide the system cursor only after fine pointer is confirmed */
+html.has-cursor,
+html.has-cursor * {
+  cursor: none !important;
+}
+html.has-cursor input,
+html.has-cursor textarea {
+  cursor: text !important;
+}

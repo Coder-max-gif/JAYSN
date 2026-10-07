@@ -1,0 +1,223 @@
+.story {
+  position: relative;
+}
+
+.chapter {
+  position: relative;
+  padding-block: var(--section-m);
+}
+
+.inner {
+  row-gap: var(--space-7);
+}
+
+.head {
+  display: grid;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+  max-width: 22rem;
+}
+
+.copy {
+  position: relative;
+  align-self: start;
+}
+
+/* Backing so WebGL behind never hurts text contrast */
+.copy::before {
+  content: "";
+  position: absolute;
+  inset: -10% -14% -10% -14%;
+  background: radial-gradient(closest-side, var(--scrim), transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.copyLeft {
+  grid-column: 1 / span 6;
+}
+
+.copyRight {
+  grid-column: 7 / span 6;
+  padding-top: var(--section-s);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  max-width: 38rem;
+  font-size: var(--fs-body-l);
+  color: var(--text-dim);
+}
+
+.body p {
+  max-width: 44ch;
+}
+
+.plateRight {
+  grid-column: 8 / span 4;
+  margin-top: 40vh;
+}
+
+.plateLeft {
+  grid-column: 1 / span 5;
+  margin-top: 30vh;
+}
+
+/* Soil and stock chapters are tall so the camera has room to travel */
+.soil {
+  min-height: 190svh;
+}
+
+.stock {
+  min-height: 190svh;
+}
+
+/* Trade: copy, then the port plate, then the globe and routes */
+.trade {
+  min-height: 300svh;
+}
+
+.tradePlate {
+  grid-column: 6 / span 7;
+  margin-top: 20vh;
+}
+
+.routes {
+  grid-column: 1 / span 5;
+  margin-top: 70vh;
+  position: relative;
+}
+
+.routes::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  background: radial-gradient(closest-side, var(--scrim), transparent);
+  z-index: -1;
+}
+
+.routeCols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6) var(--space-5);
+}
+
+.routeCols > :last-child {
+  grid-column: 1 / -1;
+}
+
+.routeList {
+  margin-top: var(--space-3);
+  display: grid;
+  gap: var(--space-1);
+  font-size: var(--fs-caption);
+  color: var(--text-dim);
+}
+
+.tbc {
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  letter-spacing: var(--track-label);
+  color: var(--grain);
+  margin-left: 0.35em;
+}
+
+.flatMap {
+  margin-bottom: var(--space-6);
+}
+
+.people {
+  min-height: 150svh;
+}
+
+.peopleHead {
+  grid-column: 1 / span 6;
+}
+
+.peopleFoot {
+  grid-column: 8 / span 4;
+  display: grid;
+  gap: var(--space-5);
+  font-size: var(--fs-body-l);
+  color: var(--text-dim);
+}
+
+.quote {
+  min-height: 110svh;
+  display: flex;
+  align-items: center;
+}
+
+.quote .inner {
+  width: 100%;
+}
+
+.quoteCopy {
+  grid-column: 1 / span 9;
+}
+
+.quoteRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-5) var(--space-7);
+  margin-top: var(--space-6);
+  font-size: var(--fs-body-l);
+  color: var(--text-dim);
+}
+
+.quoteRow p {
+  max-width: 36ch;
+}
+
+@media (max-width: 1023px) {
+  .copyLeft,
+  .copyRight,
+  .peopleHead,
+  .quoteCopy {
+    grid-column: 1 / -1;
+  }
+  .copyRight {
+    padding-top: 0;
+  }
+  .plateRight {
+    grid-column: 5 / -1;
+    margin-top: 10vh;
+  }
+  .plateLeft {
+    grid-column: 1 / span 8;
+    margin-top: 0;
+    order: 2;
+  }
+  .tradePlate {
+    grid-column: 1 / -1;
+  }
+  .routes {
+    grid-column: 1 / span 8;
+    margin-top: 50vh;
+  }
+  .peopleFoot {
+    grid-column: 1 / span 8;
+  }
+}
+
+@media (max-width: 767px) {
+  .plateRight,
+  .plateLeft,
+  .routes,
+  .peopleFoot {
+    grid-column: 1 / -1;
+  }
+  .plateRight {
+    grid-column: 3 / -1;
+  }
+  .soil,
+  .stock {
+    min-height: 160svh;
+  }
+  .trade {
+    min-height: 240svh;
+  }
+}

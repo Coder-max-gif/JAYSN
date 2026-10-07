@@ -1,0 +1,42 @@
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  color: var(--text);
+}
+
+.label {
+  position: relative;
+  padding-bottom: 0.15em;
+}
+
+.label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--hairline);
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.link:hover .label::after,
+.link:focus-visible .label::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.arrow {
+  width: 1rem;
+  height: 0.625rem;
+  color: var(--grain);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.link:hover .arrow {
+  transform: translateX(0.25rem);
+}

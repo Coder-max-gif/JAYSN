@@ -1,0 +1,317 @@
+.opening {
+  min-height: 90svh;
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--header-h) + var(--space-6));
+  padding-bottom: var(--section-s);
+}
+
+.openingInner {
+  width: 100%;
+  row-gap: var(--space-4);
+}
+
+.openingInner > :first-child {
+  grid-column: 1 / -1;
+}
+
+.h1 {
+  grid-column: 1 / span 10;
+}
+
+.intro {
+  grid-column: 7 / span 5;
+  font-size: var(--fs-body-l);
+  color: var(--text-dim);
+  margin-top: var(--space-5);
+}
+
+/* Names */
+.names {
+  padding-bottom: var(--section-m);
+}
+
+.list {
+  border-top: var(--hairline) solid var(--line);
+}
+
+.row {
+  border-bottom: var(--hairline) solid var(--line-neutral);
+}
+
+.rowBtn {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  align-items: baseline;
+  padding: var(--space-3) var(--margin);
+  text-align: left;
+}
+
+.idx {
+  grid-column: 1 / span 1;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  color: var(--grain);
+}
+
+.name {
+  grid-column: 2 / span 7;
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  line-height: 1;
+  letter-spacing: var(--track-display);
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.rowBtn:hover .name,
+.rowBtn:focus-visible .name {
+  transform: translateX(var(--space-4));
+  font-style: italic;
+}
+
+.role {
+  grid-column: 10 / span 3;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: right;
+}
+
+.plate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: clamp(13rem, 18vw, 18rem);
+  aspect-ratio: 4 / 5;
+  z-index: var(--z-chapter);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.inline {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0 var(--margin) var(--space-5);
+}
+
+.inlinePortrait {
+  width: min(70%, 18rem);
+  aspect-ratio: 4 / 5;
+}
+
+.inlineBio {
+  color: var(--text-dim);
+}
+
+/* Profile layer */
+.profile {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-profile);
+  background: var(--scrim-strong);
+  overflow-y: auto;
+  padding: calc(var(--header-h) + var(--space-5)) 0 var(--space-8);
+}
+
+.profileInner {
+  row-gap: var(--space-6);
+  align-items: end;
+  min-height: 70svh;
+}
+
+.profilePortrait {
+  grid-column: 1 / span 5;
+  aspect-ratio: 4 / 5;
+  max-height: 72svh;
+  will-change: transform;
+}
+
+.profileCopy {
+  grid-column: 7 / span 6;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.mask {
+  overflow: clip;
+  display: block;
+}
+
+.mask > span {
+  display: block;
+}
+
+.profileRole {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--grain);
+}
+
+.profileName {
+  font-family: var(--font-display);
+  font-size: var(--fs-display-l);
+  line-height: 0.95;
+}
+
+.profileQuote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+  color: var(--text);
+}
+
+.profileBio {
+  color: var(--text-dim);
+  font-size: var(--fs-body-l);
+  max-width: 48ch;
+}
+
+.profileNav {
+  position: fixed;
+  left: var(--margin);
+  right: var(--margin);
+  bottom: var(--space-4);
+  display: flex;
+  gap: var(--space-5);
+  justify-content: flex-end;
+  border-top: var(--hairline) solid var(--line);
+  padding-top: var(--space-3);
+}
+
+.navBtn,
+.close {
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.navBtn:hover,
+.close:hover {
+  color: var(--text);
+}
+
+.close {
+  color: var(--text);
+  margin-left: auto;
+}
+
+.inline .navBtn {
+  justify-self: start;
+  border-bottom: var(--hairline) solid var(--grain);
+}
+
+/* Values */
+.values {
+  padding-block: var(--section-m);
+}
+
+.valuesInner {
+  row-gap: var(--space-6);
+}
+
+.valuesHead {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.valuesList {
+  grid-column: 6 / span 7;
+  border-top: var(--hairline) solid var(--line);
+}
+
+.value {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: var(--space-4);
+  padding-block: var(--space-5);
+  border-bottom: var(--hairline) solid var(--line-neutral);
+}
+
+.valueNum {
+  font-family: var(--font-mono);
+  font-size: var(--fs-display-m);
+  line-height: 1;
+  color: var(--grain);
+}
+
+.valueTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+}
+
+.valueBody {
+  color: var(--text-dim);
+  margin-top: var(--space-2);
+}
+
+.join {
+  padding-block: var(--section-m) var(--section-l);
+}
+
+.joinInner {
+  row-gap: var(--space-6);
+}
+
+.joinTitle {
+  grid-column: 1 / span 9;
+}
+
+.joinRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-7);
+  align-items: center;
+  color: var(--text-dim);
+}
+
+@media (max-width: 1023px) {
+  .h1,
+  .intro,
+  .valuesHead,
+  .valuesList,
+  .joinTitle,
+  .profilePortrait,
+  .profileCopy {
+    grid-column: 1 / -1;
+  }
+  .profilePortrait {
+    width: min(100%, 22rem);
+  }
+  .name {
+    grid-column: 2 / -1;
+  }
+  .role {
+    grid-column: 2 / -1;
+    text-align: left;
+    margin-top: var(--space-1);
+  }
+}
+
+@media (max-width: 767px) {
+  .value {
+    grid-template-columns: 3.5rem 1fr;
+  }
+  .plate {
+    display: none;
+  }
+}

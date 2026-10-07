@@ -1,0 +1,129 @@
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: calc(var(--header-h) + var(--space-5));
+  padding-bottom: var(--space-7);
+}
+
+.label {
+  grid-column: 1 / span 5;
+}
+
+.bottom {
+  row-gap: var(--space-5);
+  align-items: end;
+}
+
+.copy {
+  grid-column: 1 / span 8;
+  position: relative;
+}
+
+/* Text backing so granules passing behind never hurt contrast */
+.copy::before,
+.rest::before {
+  content: "";
+  position: absolute;
+  inset: -12% -8% -12% -10%;
+  background: radial-gradient(closest-side, var(--scrim), transparent);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.rest {
+  grid-column: 9 / span 4;
+  position: relative;
+  display: grid;
+  gap: var(--space-5);
+}
+
+.body {
+  font-size: var(--fs-body-l);
+  color: var(--text-dim);
+  max-width: 34ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  align-items: center;
+}
+
+.cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  transform: translateX(-50%);
+}
+
+.cueLine {
+  position: relative;
+  width: var(--hairline);
+  height: var(--space-6);
+  background: var(--line-neutral);
+  overflow: clip;
+}
+
+.cueLine::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 40%;
+  background: var(--grain);
+  animation: cue var(--dur-xlarge) var(--ease-in-out) infinite;
+}
+
+.cueWord {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+@keyframes cue {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(250%);
+  }
+}
+
+:global(html[data-motion="reduce"]) .cueLine::after {
+  animation: none;
+}
+
+@media (max-width: 1023px) {
+  .copy {
+    grid-column: 1 / -1;
+  }
+  .rest {
+    grid-column: 1 / span 8;
+  }
+}
+
+@media (max-width: 767px) {
+  .label {
+    grid-column: 1 / -1;
+  }
+  .rest {
+    grid-column: 1 / -1;
+  }
+  .cue {
+    display: none;
+  }
+  .hero {
+    padding-bottom: var(--space-6);
+  }
+}

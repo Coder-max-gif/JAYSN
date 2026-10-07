@@ -1,0 +1,17 @@
+.line {
+  display: block;
+  width: 100%;
+  height: var(--hairline);
+  background: var(--line-strong);
+  transform-origin: left center;
+}
+
+.vertical {
+  width: var(--hairline);
+  height: 100%;
+  transform-origin: center top;
+}
+
+.neutral {
+  background: var(--line-neutral);
+}

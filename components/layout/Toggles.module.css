@@ -1,0 +1,67 @@
+.toggles {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.stacked {
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 2.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color var(--dur-micro) var(--ease-out);
+}
+
+.toggle:hover,
+.toggle[aria-pressed="true"] {
+  color: var(--text);
+}
+
+.bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 0.625rem;
+}
+
+.bars span {
+  width: 1px;
+  height: 30%;
+  background: currentColor;
+}
+
+.on span {
+  background: var(--grain);
+  animation: bar 0.8s var(--ease-in-out) infinite alternate;
+}
+.on span:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.on span:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes bar {
+  from {
+    height: 30%;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+@media (max-width: 1279px) {
+  .toggles:not(.stacked) .toggle:last-child {
+    display: none;
+  }
+}

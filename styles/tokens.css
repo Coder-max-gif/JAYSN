@@ -1,0 +1,123 @@
+/* JAYSN AGRO design tokens. The only place raw values live. See .claude/skills/jaysn-design-tokens */
+
+:root {
+  /* Palette */
+  --soil: #0c0f0b;
+  --loam: #171c13;
+  --moss: #3c4a2a;
+  --grain: #c9a24b;
+  --bone: #ede8da;
+  --clay: #8a5a3b;
+  --sea: #10303d;
+
+  /* Theme values (tweened by data-theme) */
+  --theme-soil: var(--soil);
+  --theme-clay: #1a120d;
+  --theme-sea: #0a1e27;
+
+  /* Semantic aliases */
+  --bg: var(--theme-soil);
+  --surface: var(--loam);
+  --text: var(--bone);
+  --text-dim: rgb(237 232 218 / 0.72);
+  --text-faint: rgb(237 232 218 / 0.5);
+  --line: rgb(201 162 75 / 0.28);
+  --line-strong: rgb(201 162 75 / 0.6);
+  --line-neutral: rgb(237 232 218 / 0.14);
+  --accent: var(--grain);
+  --focus: var(--grain);
+  --scrim: rgb(12 15 11 / 0.72);
+  --scrim-strong: rgb(12 15 11 / 0.92);
+  --error: #e08a6b;
+
+  /* Type families (next/font sets the --ff-* variables on <html>) */
+  --font-display: var(--ff-display), "Times New Roman", serif;
+  --font-body: var(--ff-body), system-ui, sans-serif;
+  --font-mono: var(--ff-mono), ui-monospace, monospace;
+
+  /* Type scale */
+  --fs-display-xl: clamp(4rem, 14vw, 15rem);
+  --fs-display-l: clamp(3rem, 8.4vw, 9rem);
+  --fs-display-m: clamp(2.25rem, 5.2vw, 5.5rem);
+  --fs-heading: clamp(1.5rem, 2.4vw, 2.25rem);
+  --fs-body-l: clamp(1.125rem, 1.35vw, 1.375rem);
+  --fs-body: 1rem;
+  --fs-label: 0.71875rem;
+  --fs-caption: 0.8125rem;
+  --fs-counter: clamp(4.5rem, 12vw, 11rem);
+
+  --lh-display: 0.92;
+  --lh-heading: 1.1;
+  --lh-body: 1.55;
+  --track-display: -0.02em;
+  --track-label: 0.14em;
+
+  /* Spacing (8px unit) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+  --space-9: 8rem;
+  --section-s: clamp(4rem, 8vw, 7rem);
+  --section-m: clamp(6rem, 12vw, 11rem);
+  --section-l: clamp(8rem, 18vw, 16rem);
+
+  /* Grid */
+  --columns: 12;
+  --gutter: 1.5rem;
+  --margin: clamp(1rem, 4vw, 4rem);
+  --header-h: 4.5rem;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo.out */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1); /* power3.inOut */
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0); /* expo.in */
+  --dur-micro: 0.3s;
+  --dur-standard: 0.8s;
+  --dur-large: 1.2s;
+  --dur-xlarge: 1.6s;
+
+  /* Layers */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-loop: 2;
+  --z-chapter: 30;
+  --z-header: 40;
+  --z-menu: 50;
+  --z-profile: 60;
+  --z-transition: 80;
+  --z-preloader: 90;
+  --z-cursor: 95;
+  --z-grain: 99;
+  --z-dev: 100;
+
+  /* Lines */
+  --hairline: 1px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --gutter: 1rem;
+    --header-h: 3.75rem;
+  }
+}
+
+html[data-theme="soil"] {
+  --bg: var(--theme-soil);
+}
+html[data-theme="clay"] {
+  --bg: var(--theme-clay);
+}
+html[data-theme="sea"] {
+  --bg: var(--theme-sea);
+}
+
+html[data-motion="reduce"] {
+  --dur-standard: 0.3s;
+  --dur-large: 0.3s;
+  --dur-xlarge: 0.3s;
+}

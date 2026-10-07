@@ -1,0 +1,13 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--hairline);
+  background: var(--grain);
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: calc(var(--z-header) + 1);
+  pointer-events: none;
+  opacity: 0.8;
+}

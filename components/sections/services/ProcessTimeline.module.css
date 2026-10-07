@@ -1,0 +1,161 @@
+.timeline {
+  position: relative;
+  min-height: 100svh;
+  padding-block: calc(var(--header-h) + var(--space-5)) var(--space-6);
+  background: linear-gradient(90deg, var(--scrim-strong) 0%, var(--scrim) 60%, transparent 100%);
+}
+
+.inner {
+  row-gap: var(--space-6);
+}
+
+.head {
+  grid-column: 1 / span 4;
+  display: grid;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.track {
+  grid-column: 6 / span 7;
+  position: relative;
+  padding-left: var(--space-6);
+}
+
+.rail {
+  position: absolute;
+  left: 0.25rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: var(--hairline);
+  background: var(--line-neutral);
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  background: var(--grain);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-4);
+  align-items: start;
+  opacity: 0.45;
+  transition: opacity var(--dur-standard) var(--ease-out);
+}
+
+.dot {
+  position: absolute;
+  left: calc(-1 * var(--space-6) + 0.25rem - 3px);
+  top: 0.75rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--soil);
+  border: var(--hairline) solid var(--line-strong);
+  transition: background var(--dur-micro) var(--ease-out);
+}
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+  color: var(--grain);
+}
+
+.icon :global(path) {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.title {
+  display: flex;
+  gap: var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--fs-heading);
+  line-height: var(--lh-heading);
+  min-height: calc(var(--fs-heading) * 1.7);
+  align-items: flex-end;
+  transform-origin: left bottom;
+  transition: transform var(--dur-standard) var(--ease-out);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  color: var(--grain);
+}
+
+.body {
+  max-width: 52ch;
+  color: var(--text-dim);
+  margin-top: var(--space-2);
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.active,
+.done {
+  opacity: 1;
+}
+
+.done {
+  opacity: 0.7;
+}
+
+.active .dot,
+.done .dot {
+  background: var(--grain);
+}
+
+.active .title {
+  transform: scale(1.45);
+}
+
+.active .icon :global(path) {
+  animation: draw var(--dur-large) var(--ease-out) both;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Unpinned: everything visible */
+@media (max-width: 1023px) {
+  .timeline {
+    min-height: 0;
+    background: none;
+  }
+  .head,
+  .track {
+    grid-column: 1 / -1;
+  }
+  .step {
+    opacity: 1;
+  }
+  .fill {
+    transform: scaleY(1);
+  }
+  .active .title {
+    transform: none;
+  }
+}
+
+:global(html[data-motion="reduce"]) .step {
+  opacity: 1;
+}

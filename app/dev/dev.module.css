@@ -1,0 +1,13 @@
+.page {
+  padding-top: calc(var(--header-h) + var(--space-7));
+}
+
+.copy {
+  grid-column: 1 / span 6;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.spacer {
+  height: 250svh;
+}

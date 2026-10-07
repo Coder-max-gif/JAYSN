@@ -1,0 +1,53 @@
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  background: var(--soil);
+  clip-path: inset(0 0 0 0);
+}
+
+:global(html.no-preloader) .preloader,
+:global(html:not(.js)) .preloader {
+  display: none;
+}
+
+.mask {
+  position: absolute;
+  left: var(--margin);
+  bottom: calc(var(--space-6) + var(--space-3));
+  overflow: clip;
+}
+
+.counter {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-counter);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--bone);
+  font-variant-numeric: tabular-nums;
+}
+
+.caption {
+  position: absolute;
+  right: var(--margin);
+  bottom: calc(var(--space-6) + var(--space-3));
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: right;
+  max-width: 24ch;
+}
+
+.line {
+  position: absolute;
+  left: var(--margin);
+  right: var(--margin);
+  bottom: var(--space-6);
+  height: var(--hairline);
+  background: var(--grain);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
